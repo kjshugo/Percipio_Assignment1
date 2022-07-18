@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Join_Form</title>
+    </style>
+	<script>
+		window.onload = function()
+		{
+			document.getElementById("color").addEventListener('change', displayColor, false);
+			document.getElementById("slider").addEventListener('change', 
+				function()
+					{
+						document.getElementById('slideOut').innerHTML = document.getElementById('slider').value;
+					} ,false);
+		}
+		
+		function displayColor()
+		{
+			document.getElementById('colorOut').innerHTML = document.getElementById('color').value;
+		}
+	</script>
+	
+	<script>
+		function getAge()
+		{
+			alert(document.getElementById('myNumber').value);
+		}
+	</script>
+    
+    <script>
+		function getCars()
+		{
+			alert(document.getElementById('carsout').value);
+		}
+	</script>
+	
+	<script>
+		function getColour()
+		{
+			alert(document.getElementById('color').value);
+		}
+	</script>
+	
+	<script>
+		function evalSlider()
+		{
+			var sliderValue = document.getElementById('rating').value;
+			document.getElementById('sliderVal').innerHTML = sliderValue;
+		}
+	</script>
+	
+	<script>
+		function getDate()
+		{
+			alert(document.getElementById('myDate').value);
+		}
+	</script>
+</head>
+
+<body>
+    <form action="scripts/upload.php" method="post" enctype="multipart/form-data">
+	<table width="550" cellpadding="2">
+  <caption>
+    The FORM!
+  </caption>
+  <tbody>
+    <tr>
+      <td width="200">Name:</td>
+      <td width="300"><input name="name" type="text" id="name" size="50" maxlength="50" placeholder="Name" autofocus ></td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td><input name="email" type="email" id="email" size="50" maxlength="50" placeholder="required" required="required"></td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td><input name="password" type="password" id="password" size="20" maxlength="20"></td>
+    </tr>
+	 <tr>
+      <td>Comments:</td>
+		 <td><textarea name="comments" cols="50" rows="10" placeholder="Enter comments: Max 500 words"></textarea></td>
+    </tr>
+	 <tr>
+	  <td> Subscribe?</td>
+	  <td>
+		 <p>
+		   <label>
+		     <input type="radio" name="subscribe"  value="Yes" id="subscribe_0"  checked="checked">
+		     Yes</label>
+		   
+		   <label>
+		     <input type="radio" name="subscribe" value="Nope" id="subscribe_1">
+		     No</label>
+		   <br>
+         </p></td>
+	  </tr>
+	 <tr>
+	  	<td>Interests:</td>
+		<td>
+	 	  <p>
+		 	  <label>
+		 	    <input type="checkbox" name="ints[]" value="TV Shows" id="ints_0">
+		 	    TV</label>
+		 	  <label>
+		 	    <input type="checkbox" name="ints[]" value="Reading" id="ints_1">
+		 	    Reading</label>
+		 	  <label>
+		 	    <input type="checkbox" name="ints[]" value="Movies" id="ints_2">
+		 	    Movies</label>
+		 	  <label>
+		 	    <input type="checkbox" name="ints[]" value="Games" id="ints_3">
+		 	    Games</label>
+			  <label>
+		 	    <input name="ints[]" type="checkbox" id="ints_4" value="Star Trek" checked="checked">
+		 	    Star Trek</label>
+		 	  <br>
+ 	     </p></td>
+	  </tr>
+    <tr>
+	  <td>Best Contact Time:</td>
+	  <td>
+			<select name="time">
+		  		<option value="morning" id="morning">Morning</option>
+				<option value="arvo" id="arvo">Arvo</option>
+				<option value="night" id="night">Night</option>
+		  </select>
+		</td>
+	  </tr>
+	  
+	  <tr>
+      <td><input name="submit" type="submit" id="submit" value="Send Info"></td>
+      </tr>
+  	</tbody>
+	</table>
+	
+<table width="400" border="0" cellpadding="1">
+  <caption>
+    		<h1>Choice:</h1>
+  </caption>
+  <tbody>
+      <tr>
+      		<td>Please choose:</td>
+      		<td> 
+		  	<form action="#" method="post">
+		  	<label for="color">Colour</label> 
+		  	<input type="color" id="color" name="color" />
+			<output id="colorOut"></output>
+		  	</form>
+			</td>
+      </tr>
+	  <tr>
+	  		<td>Please choose value :</td>
+		 	<td><input id="slider" type="range"  min="0" max="111" name="rangeval">
+		    <output id="slideOut"></output></td>
+	  </tr>
+	  <tr>
+	  		<td>Choose a Date:</td>
+		  	<td><input type="date" name="date"></td>
+	  </tr>
+	  <tr>
+	  		<td><button id="colour" onclick="getColour()">Submit</button></td>
+	  </tr>
+	
+  </tbody>
+</table>
+
+</form>
+	<p><br/><br/>
+	
+		Age: <input type="number" id="myNumber" min="-1" max="111" />
+		<button id="age" onclick="getAge()">Get Age</button>
+		</p>
+	<p><br/>
+	<form action="#" method="post">
+		Rate Last Movie Watched (-10 to 20):
+		<input type="range" id="rating" min="-10" max="20" name="rating" onchange="evalSlider()"/>
+		<output id="sliderVal"></output>
+	</form></p>
+	<p><br/>
+	<form>
+	Date / Time last movie watched:
+		<input type="datetime-local" id="myDate" />
+	</form>
+	<button id="getDate" onclick="getDate()">Check Date/Time</button>
+	</p>
+
+	<p>
+		<form action="scripts/fileUpload.php" method="post" enctype="multipart/form-data">
+			<label for="file">Filename:</label>
+			<input type="file" name="fileToUpload" id="fileToUpload"><br/>
+			<input type="submit" name="submit" value="Upload">
+		</form>
+	</p>
+    
+<div id="Datalists" style="width: auto; height: auto; background-color: burlywood;">    
+    <p> <!-- datalist example using php script for result -->
+        <b><u><i>Examples of datalists : </i></u></b><br/>
+        <form action="scripts/datalist.php" method="get">
+            <label>Please choose Dream Car [click to see list]:</label><br/>
+            <input list="cars" name="car">
+            <datalist id="cars">
+            <option value="Audi"></option>
+            <option value="BMW"></option>
+            <option value="Mercedes"></option>
+            <option value="Porsche"></option>
+            <option value="Mitsubishi"></option>
+            <option value="Bentley"></option>
+            <option value="Ford"></option>
+            </datalist>
+            <input type="submit">
+        </form>
+    </p>
+
+    <p><!-- 2nd datalist example using alert instead of php -->
+        <form action="#" method="post">
+            <datalist id="cars2">
+                <option value="Audi"></option>
+                <option value="BMW"></option>
+                <option value="Mercedes"></option>
+                <option value="Porsche"></option>
+                <option value="Mitsubishi"></option>
+                <option value="Bentley"></option>
+                <option value="Ford"></option> 
+            </datalist>
+            
+            Choose Car : <input type="text" list="cars2" id="carsout" />
+            <button id="carsbut" onclick="getCars()">Get Car</button>
+        </form>
+    
+    </p>
+</div>
+<br/>
+<div id="Patterns" style="background-color: aqua">
+    <p><!-- example of a pattern entry into an email field -->
+    <b><i><u>Exmaple of a 'pattern' entry into an email field :</u></i></b>
+        <br/>
+        <form action="#" method="post">
+            <label for="email2">Email:</label>
+            <input type="text" id="email2" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+            <input type="submit" />
+        </form>
+        <!-- Example of 'Pattern Entry' into a username field -->
+        <form action="#" method="post">
+        <br/><b><i><u>Example of a 'pattern' entry for username (only A-Z, a-z, 0-9 and no longer than 12):</u></i></b>
+            <br/>
+            <label for="userName">UserName:</label>
+            <input type="text" id="userName" name="userName" pattern="[a-zA-Z][A-Za-z0-9$#]{1,12}" required/>
+            <button type="submit">Submit</button>
+        </form>
+    </p>
+
+
+</div>
+</body>
+</html>
